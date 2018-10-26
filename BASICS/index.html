@@ -5,11 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="js/vue.js"></script>
-  <title>Working With Events</title>
+  <title>Computed And Watchers</title>
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
+    <input v-model="user" type="text">
+    <button v-on:click="toggleActive">Other Action</button>
+    <hr>
+    <div>
+      Name: {{compMessage}}
+    </div>
+    <div>
+      Active: {{isActive()}}
+    </div>
+    <div>
+      Loading: {{ loading }}
+    </div>
 
 
   </div>
@@ -17,10 +28,32 @@
     new Vue({
       el:"#app",
       data:{
-        name:'Francis'
+        user:'',
+        active:false,
+        loading:false
+      },
+      watch:{
+        active(value){
+          this.loading = true;
+          setTimeout(()=>{
+            this.loading =false;
+          },3000)
+        }
+      },
+      computed:{
+        compMessage(){
+          console.log('Message Triggered!!');
+          return this.user === 'Francis' ? 'Welcome' : 'Not allowed'
+        }
       },
       methods:{
-       
+       isActive(){
+         console.log('Active Triggered!!');
+         return this.active ? 'Active' : 'Not Active'
+       },
+       toggleActive(){
+         this.active = this.active ? false : true
+       }
       }
       
     })
