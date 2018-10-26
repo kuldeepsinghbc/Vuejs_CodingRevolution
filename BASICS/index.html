@@ -9,21 +9,41 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
-
-
+    <div>Instance one: {{value}}</div>
+    <button @click="changeValue">Change Value</button>
+  </div>
+  <hr>
+  <div id="app2">
+    <div>Instance two: {{value}}</div>
+    <button @click="saysSomething">Change Value</button>
   </div>
   <script>
-    new Vue({
+    let message = "Hey guys!!"
+    const app1 = new Vue({
       el:"#app",
       data:{
-        name:'Francis'
+        value:'Instance one working!!'
       },
       methods:{
-       
+        changeValue(){
+          app2.value = 'The value changed'
+        }
       }
-      
     })
+    const app2 = new Vue({
+      el:"#app2",
+      data:{
+        value:'Instance two working!!'
+      },
+      methods:{
+        saysSomething(){
+          alert(message)
+        }
+      }
+    })
+    setTimeout(()=>{
+      app1.value = "Changed"
+    },2000)
   </script>
 </body>
 </html>
