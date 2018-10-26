@@ -5,28 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="js/vue.js"></script>
-  <title>DIRECTIVES</title>
+  <title>Conditional Rendering</title>
 </head>
 <body>
   <div id="app">
-    <img v-bind:src="src" v-bind:alt="alt">
-    <hr>
-    <a v-bind:href="link">Google</a>
-    <hr>
-    <p v-text="myText"></p>
-    <div v-html="myHtml"></div>
+    <!-- <p v-if="userAge >allowedAge">You are good to go.</p>
+    <p v-else-if="user === 'Francis'">Francis you are good to go.</p>
+    <p v-else>You are not allowed</p> -->
+
+
+    <!-- calling function -->
+    <!-- <p v-if="checkUser()">Show it</p>
+    <p v-else>You are not allowed</p> -->
+    
+
+    <!-- v-show -->
+    <p v-show="user === 'Francis'">Show Francis</p>
+    <p v-show="user !== 'Francis'">You are not allowed to see Francis</p>
   </div>
   <script>
     new Vue({
       el:"#app",
       data:{
-        src:"https://picsum.photos/200/300",
-        alt:"another image",
-        link:"http://google.com",
-        myText:"Hello guys",
-        myHtml:"<strong>Francis Jones</strong>"
-        
-        
+        user:"Franciss",
+        userAge:15,
+        allowedAge:18
+      },
+      methods:{
+        checkUser(){
+          return this.user ==="Francis" ? true : false
+        }
       }
       
     })
