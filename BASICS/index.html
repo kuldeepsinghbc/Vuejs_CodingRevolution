@@ -10,14 +10,13 @@
 <body>
   <div id="app">
     <!-- <h1>{{name}}</h1>
-    <div v-on:click="updateName()">
+    <div v-on:click="changeName('Steve',$event)">
       Click me!!
     </div> -->
-    <div class="box" v-on:mousemove="getCoord">
-      Hover Me!
-    </div>
-    <p>x: {{x}}</p>
-    <p>y: {{y}}</p>
+   <form  v-on:submit.prevent="handleForm" action="">
+     <input type="text">
+     <button type="submit">Submit</button>
+   </form>
 
   </div>
   <script>
@@ -25,27 +24,22 @@
       el:"#app",
       data:{
         name:'Francis',
-        x:0,
-        y:0
       },
       methods:{
-       updateName(){
-         this.name ='Steve';
+       changeName(newName,event){
+         this.name =newName;
+         console.log(event);
        },
-       getCoord(event){
-          this.x = event.clientX;
-          this.y = event.clientY;
+       handleForm(){
+        
+        console.log('submit form');
        }
       }
       
     })
   </script>
   <style>
-    .box{
-      background:red;
-      width:200px;
-      height:200px;
-    }
+    
   </style>
 </body>
 </html>
