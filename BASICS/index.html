@@ -9,21 +9,64 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
-
+    <!-- <div class="element" 
+      v-bind:class="[
+        colors.redClass.active ? colors.redClass.name : ''
+        ]" 
+      v-on:click="
+          colors.redClass.active = !colors.redClass.active,
+          newStyle.fontSize='50px'
+        "
+      v-bind:style="newStyle"
+    >
+      This is my content.
+    </div> -->
+    <div class="element" 
+      v-bind:class="colorStyle"
+      v-on:click="colorStyle = 'red'"
+      >
+      This is my content.
+    </div>
 
   </div>
-  <script>
-    new Vue({
-      el:"#app",
-      data:{
-        name:'Francis'
-      },
-      methods:{
-       
-      }
-      
-    })
-  </script>
+  
 </body>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      colorStyle:'blue',
+      colors:{
+        redClass:{
+          name:'red',
+          active:true
+        }
+      },
+      newStyle:{
+        fontSize: '20px',
+        border: '5px solid green'
+      }
+    },
+    methods: {
+
+    }
+
+  })
+</script>
+<style>
+  .element {
+    color:white;
+    background:black;
+    padding: 10px;
+  }
+  .red{
+    background:red;
+  }
+  .blue{
+    background:blue;
+  }
+  .green{
+    background:green;
+  }
+</style>
 </html>
