@@ -9,7 +9,9 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
+    <div>{{name}}</div>
+    <div @click="updateName">Update Name</div>
+    <div @click="killit">Destroy</div>
 
 
   </div>
@@ -19,8 +21,37 @@
       data:{
         name:'Francis'
       },
+      beforeCreate() {
+        console.log('Running before create');
+      },
+      created() {
+        console.log('Running created');
+      },
+      beforeMount() {
+        console.log('Running before mount');
+      },
+      mounted() {
+        console.log('Running mounted');
+      }, 
+      beforeUpdate() {
+        console.log('Running before update');
+      }, 
+      updated() {
+        console.log('Running  updated');
+      },
+      beforeDestroy() {
+        console.log('Running before destroy');
+      }, 
+      destroyed() {
+        console.log('Running Destroy');
+      },
       methods:{
-       
+        updateName(){
+          this.name = 'Steve'
+        },
+        killit(){
+          this.$destroy();
+        }
       }
       
     })
