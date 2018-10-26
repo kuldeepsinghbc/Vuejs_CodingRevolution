@@ -9,21 +9,43 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
-
+    <!-- <h1>{{name}}</h1>
+    <div v-on:click="updateName()">
+      Click me!!
+    </div> -->
+    <div class="box" v-on:mousemove="getCoord">
+      Hover Me!
+    </div>
+    <p>x: {{x}}</p>
+    <p>y: {{y}}</p>
 
   </div>
   <script>
     new Vue({
       el:"#app",
       data:{
-        name:'Francis'
+        name:'Francis',
+        x:0,
+        y:0
       },
       methods:{
-       
+       updateName(){
+         this.name ='Steve';
+       },
+       getCoord(event){
+          this.x = event.clientX;
+          this.y = event.clientY;
+       }
       }
       
     })
   </script>
+  <style>
+    .box{
+      background:red;
+      width:200px;
+      height:200px;
+    }
+  </style>
 </body>
 </html>
