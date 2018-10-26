@@ -9,27 +9,54 @@
 </head>
 <body>
   <div id="app">
-    <!-- <p v-if="userAge >allowedAge">You are good to go.</p>
-    <p v-else-if="user === 'Francis'">Francis you are good to go.</p>
-    <p v-else>You are not allowed</p> -->
+    <!-- <p v-for="(name,index) in names">
+      {{index}} : {{name}}
+    </p> -->
+    <!-- <ul>
+      <li v-for="(name,index) in names">
+        {{index}} / {{name}}
+      </li>
+    </ul> -->
 
+    <!-- Objects -->
+    <!-- <ul>
+      <li v-for="(car, index) in cars">
+        {{index}} / {{car.brand}} / {{car.color}}
+      </li>
+    </ul> -->
+    <ul>
+      <li v-for="(value,key, index) in user">
+        {{index}} - {{key}} - {{value}}
+      </li>
+    </ul>
 
-    <!-- calling function -->
-    <!-- <p v-if="checkUser()">Show it</p>
-    <p v-else>You are not allowed</p> -->
-    
-
-    <!-- v-show -->
-    <p v-show="user === 'Francis'">Show Francis</p>
-    <p v-show="user !== 'Francis'">You are not allowed to see Francis</p>
   </div>
   <script>
     new Vue({
       el:"#app",
       data:{
-        user:"Franciss",
-        userAge:15,
-        allowedAge:18
+        user:{
+          name:"Francis",
+          lastname:'Jones',
+          age:25
+        },
+        names:[
+          'Francis','Jane','Steve'
+        ],
+        cars:[
+          {
+            brand:'Ferrari',
+            color:'Red'
+          },
+          {
+            brand:'Ford',
+            color:'Blue'
+          },
+          {
+            brand:'Chevy',
+            color:'Green'
+          },
+        ],
       },
       methods:{
         checkUser(){
