@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="js/vue.js"></script>
-  <title>Working With Events</title>
+  <title>Mounting and Unmounting</title>
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
-
-
+    
   </div>
   <script>
-    new Vue({
-      el:"#app",
+    const template = `<div>{{name}}</div>`
+    const app1 = new Vue({
       data:{
-        name:'Francis'
+        name:"Francis"
       },
-      methods:{
-       
-      }
-      
+      template:template,
+      methods:{  
+      }  
     })
+    setTimeout(()=>{
+      app1.$mount('#app')
+    },3000)
   </script>
 </body>
 </html>
