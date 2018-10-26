@@ -9,20 +9,45 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{name}}</h1>
-
-
+    <div ref="title">Hello!!</div>
+    <div>Instance one: {{value}}</div>
+    <button @click="changeValue">Change</button>
   </div>
+  <hr>
+  <div id="app2">
+    <div>Instance two: {{value}}</div>
+    <button @click="saySomething">Change</button>
+  </div>
+  <hr>
   <script>
+    const data = {
+      value:'Instance one working!!'
+    }
     new Vue({
       el:"#app",
-      data:{
-        name:'Francis'
-      },
+      data:data
+      ,
       methods:{
-       
+       changeValue(){
+          app2.value = 'The value changed'
+          console.log(this.$refs);
+       }
       }
-      
+    })
+    new Vue({
+      el:"#app2",
+      data:{
+        value:'Instance two wroking'
+      }
+      ,
+      methods:{
+       changeValue(){
+          
+       },
+       saySomething(){
+         alert(message)
+       }
+      }
     })
   </script>
 </body>
